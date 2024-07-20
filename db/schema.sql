@@ -3,8 +3,8 @@ CREATE DATABASE cars_dev;
 
 \c cars_dev;
 
-CREATE TABLE Cars (
-    CarID INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE cars (
+    CarID SERIAL PRIMARY KEY ,
     Make VARCHAR(50),
     Model VARCHAR(50),
     Year INT,

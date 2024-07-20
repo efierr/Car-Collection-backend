@@ -7,7 +7,6 @@ const { getAllCars} = require("../queries/cars");
 
 
 //show all cars
-// INDEX
 router.get("/", async (req, res) => {
     const allCars = await getAllCars();
     if (allCars[0]) {
