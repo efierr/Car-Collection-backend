@@ -27,8 +27,4 @@ const createCar = async (car) => {
   }
 };
 
-module.exports = {
-  getAllCars,
-  createCar,
-  getCar,
-};
+module.exports = {getAllCars, createCar};
