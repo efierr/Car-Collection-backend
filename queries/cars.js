@@ -35,4 +35,4 @@ const createCar = async (car) => {
   }
 };
 
-module.exports = {getAllCars, createCar};
+module.exports = {getAllCars, createCar, deleteCar, editCar};
