@@ -3,7 +3,7 @@ const db = require("../db/dbConfig.js");
 
 
 
-// queries/cars.js
+//show all cars 
 const getAllCars = async () => {
     try {
       const allCars = await db.any("SELECT * FROM cars");
@@ -12,6 +12,14 @@ const getAllCars = async () => {
       return error;
     }
   };
+const deleteCar = async (id) => {
+  try {
+    const deletedCar = await db.one("DELETE FROM cars WHERE id = $1 RETURNING *", id);
+    return deletedCar;
+  } catch (error){
+return error;
+  }
+}
 
 
 // CREATE

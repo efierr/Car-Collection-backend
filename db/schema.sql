@@ -4,7 +4,7 @@ CREATE DATABASE cars_dev;
 \c cars_dev;
 
 CREATE TABLE Cars (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     Make VARCHAR(50),
     Model VARCHAR(50),
     Year INT,

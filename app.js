@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Cars Collection");
 });
 
-
+app.use("/cars", carsController);
 
 // 404 Page
 app.get("*", (req, res) => {
