@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { getAllCars, deleteCar, createCar} = require("../queries/cars");
-
+//controller/colorsController.js
+const { checkName } = require("../validations/checkColors.js");
+const { checkBoolean } = require("../validations/checkCars.js");
 
 
 
@@ -18,7 +20,7 @@ router.get("/", async (req, res) => {
 
   
 // CREATE
-router.post("/", async (req, res) => {
+router.post("/", checkName,checkBoolean, async (req, res) => {
   try {
     const car = await createCar(req.body);
     res.json(car);
@@ -27,7 +29,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// 
+// delete
   router.delete("/:id", async (req, res) => {
 const {id} = req.params;
 const deletedCar = await deleteCar(id)
