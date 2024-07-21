@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { getAllCars, deleteCar, createCar} = require("../queries/cars");
 //controller/colorsController.js
-const { checkName } = require("../validations/checkColors.js");
+const { checkName } = require("../validations/checkCars.js");
 const { checkBoolean } = require("../validations/checkCars.js");
 
 
