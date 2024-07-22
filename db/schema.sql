@@ -5,10 +5,10 @@ CREATE DATABASE cars_dev;
 
 CREATE TABLE Cars (
     id SERIAL PRIMARY KEY,
-    Make VARCHAR(50),
-    Model VARCHAR(50),
-    Year INT,
-    Color VARCHAR(20),
-    Price DECIMAL(10, 2),
-    IsFavorite BOOLEAN
+    make VARCHAR(50),
+    model VARCHAR(50),
+    year INT,
+    color VARCHAR(20),
+    price DECIMAL(10, 2),
+    is_favorite BOOLEAN
 );

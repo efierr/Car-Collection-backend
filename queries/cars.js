@@ -12,22 +12,24 @@ const getAllCars = async () => {
       return error;
     }
   };
-const deleteCar = async (id) => {
-  try {
-    const deletedCar = await db.one("DELETE FROM cars WHERE id = $1 RETURNING *", id);
-    return deletedCar;
-  } catch (error){
-return error;
-  }
-}
 
+ // get one car
+  const getCar = async (id) => {
+    try {
+      const oneCar = await db.one("SELECT * FROM cars WHERE id=$1", id);
+      return oneCar;
+    } catch (error) {
+      return error;
+    }
+  };
 
-// CREATE
+// CREATE/Add one car
+
 const createCar = async (car) => {
   try {
-    const car = await db.one(
-      "INSERT INTO cars( Make VARCHAR(50),Model VARCHAR(50),Year INT,Color VARCHARPrice DECIMAL(10, 2),IsFavorite BOOLEAN) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
-      [car.Make, car.Model, car.Year, car.Color, car.Price, car.IsFavorite]
+    const newCar = await db.one(
+      "INSERT INTO cars( make, model,year ,color, price, is_favorite ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [car.make, car.model, car.year, car.color, car.price, car.isfavorite]
     );
     return newCar;
   } catch (error) {
@@ -35,4 +37,33 @@ const createCar = async (car) => {
   }
 };
 
-module.exports = {getAllCars, createCar, deleteCar, editCar};
+// DELETE one car
+
+const deleteCar = async (id) => {
+  try {
+    const deletedCar = await db.one(
+      "DELETE FROM cars WHERE id = $1 RETURNING *",
+      id
+    );
+    return deletedCar;
+  } catch (error) {
+    return error;
+  }
+};
+
+// UPDATE one car
+
+const updateCar = async (id, car) => {
+  try {
+    const updatedCar = await db.one(
+      "UPDATE cars SET make=$1, model=$2, year=$3, color=$4, price=$5, is_favorite=$6 where id=$7 RETURNING *",
+      [car.make, car.model, car.year, car.color, car.price, car.is_favorite, id]
+    );
+    return updatedCar;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+module.exports = {getAllCars, createCar, getCar, deleteCar, updateCar};

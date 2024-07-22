@@ -1,6 +1,6 @@
 \c cars_dev;
 
-INSERT INTO cars (Make, Model, Year, Color, Price, IsFavorite) VALUES
+INSERT INTO cars (make, model, year, color, price, is_favorite) VALUES
 ('Toyota', 'Camry', 2019, 'Red', 20000.00, TRUE),
 ('Honda', 'Accord', 2018, 'Blue', 18000.00, FALSE),
 ('Ford', 'Mustang', 2020, 'Black', 35000.00, TRUE),
