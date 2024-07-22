@@ -1,14 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { getAllCars, deleteCar, createCar} = require("../queries/cars");
-//controller/colorsController.js
-const { checkName } = require("../validations/checkCars.js");
-const { checkBoolean } = require("../validations/checkCars.js");
+const { getAllCars, createCar, getCar, deleteCar, updateCar} = require("../queries/cars");
+const { checkName, checkBoolean } = require("../validations/checkCars.js");
 
 
 
-
-//show all cars
+//SHOW  all cars
 router.get("/", async (req, res) => {
     const allCars = await getAllCars();
     if (allCars[0]) {
@@ -18,9 +15,22 @@ router.get("/", async (req, res) => {
     }
   });
 
+
+// SHOW one car
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const car = await getCar(id);
+  if (car) {
+    res.json(car);
+  } else {
+    res.status(404).json({ error: "not found" });
+  }
+});
+
   
-// CREATE
-router.post("/", checkName,checkBoolean, async (req, res) => {
+// CREATE one car
+
+router.post("/", checkName, checkBoolean, async (req, res) => {
   try {
     const car = await createCar(req.body);
     res.json(car);
@@ -29,23 +39,25 @@ router.post("/", checkName,checkBoolean, async (req, res) => {
   }
 });
 
-// delete
-  router.delete("/:id", async (req, res) => {
-const {id} = req.params;
-const deletedCar = await deleteCar(id)
-if (deletedCar.id) {
-    res.status(200).json(deletedCar)
-} else {
-    res.status(404).json("car not found")
-}
-  })
+// DELETE one car
+
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  const deletedCar = await deleteCar(id);
+  if (deletedCar.id) {
+    res.status(200).json(deletedCar);
+  } else {
+    res.status(404).json("Car not found");
+  }
+});
+
+// UPDATE one car
+
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const updatedCar = await updateCar(id, req.body);
+  res.status(200).json(updatedCar);
+});
 
 
-  /*
-  colors.delete("/:id", async (req, res) => {
-  const {id} = req.params
-  const deletedColor = await deleteColor(id)
-  res.status(200).json(deletedColor);
-})
-  */
 module.exports = router;
