@@ -56,8 +56,8 @@ const deleteCar = async (id) => {
 const updateCar = async (id, car) => {
   try {
     const updatedCar = await db.one(
-      "UPDATE cars SET make=$1, model=$2, year=$3, color=$4, price=$5, is_favorite=$6 where id=$7 RETURNING *",
-      [car.make, car.model, car.year, car.color, car.price, car.is_favorite, id]
+      "UPDATE cars SET make=$1, model=$2, year=$3, color=$4, price=$5, isfavorite=$6 where id=$7 RETURNING *",
+      [car.make, car.model, car.year, car.color, car.price, car.isfavorite, id]
     );
     return updatedCar;
   } catch (error) {
