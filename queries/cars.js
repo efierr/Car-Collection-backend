@@ -28,7 +28,7 @@ const getAllCars = async () => {
 const createCar = async (car) => {
   try {
     const newCar = await db.one(
-      "INSERT INTO cars( make, model,year ,color, price, is_favorite ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      "INSERT INTO cars( make, model,year ,color, price, isfavorite ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
       [car.make, car.model, car.year, car.color, car.price, car.isfavorite]
     );
     return newCar;
