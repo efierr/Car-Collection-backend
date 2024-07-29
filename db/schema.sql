@@ -10,5 +10,6 @@ CREATE TABLE Cars (
     year INT,
     color VARCHAR(20),
     price DECIMAL(10, 2),
-    is_favorite BOOLEAN
+    is_favorite BOOLEAN,
+    img_url TEXT
 );
