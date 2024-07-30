@@ -28,8 +28,8 @@ const getAllCars = async () => {
 const createCar = async (car) => {
   try {
     const newCar = await db.one(
-      "INSERT INTO cars( make, model,year ,color, price, isfavorite ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [car.make, car.model, car.year, car.color, car.price, car.isfavorite]
+      "INSERT INTO cars( make, model,year ,color, price, is_favorite, img_url ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+      [car.make, car.model, car.year, car.color, car.price, car.is_favorite, car.img_url]
     );
     return newCar;
   } catch (error) {
@@ -56,8 +56,8 @@ const deleteCar = async (id) => {
 const updateCar = async (id, car) => {
   try {
     const updatedCar = await db.one(
-      "UPDATE cars SET make=$1, model=$2, year=$3, color=$4, price=$5, isfavorite=$6 where id=$7 RETURNING *",
-      [car.make, car.model, car.year, car.color, car.price, car.isfavorite, id]
+      "UPDATE cars SET make=$1, model=$2, year=$3, color=$4, price=$5, is_favorite=$6, img_url=$7 where id=$8 RETURNING *",
+      [car.make, car.model, car.year, car.color, car.price, car.is_favorite, car.img_url, id]
     );
     return updatedCar;
   } catch (error) {

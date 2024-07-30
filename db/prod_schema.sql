@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS cars_dev;
-CREATE DATABASE cars_dev;
+DROP DATABASE IF EXISTS cars_dev_fd1o;
+CREATE DATABASE cars_dev_fd1o;
 
-\c cars_dev;
+\c cars_dev_fd1o;
 
 CREATE TABLE Cars (
     id SERIAL PRIMARY KEY,
