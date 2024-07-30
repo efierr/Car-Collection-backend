@@ -1,4 +1,4 @@
-\c cars_dev;
+\c cars_dev_fd1o;
 
 INSERT INTO cars (make, model, year, color, price, is_favorite, img_url) VALUES
 ('Toyota', 'Camry', 2019, 'Red', 20000.00, TRUE, 'https://img2.carmax.com/assets/25883973/hero.jpg?width=400&height=300'),
